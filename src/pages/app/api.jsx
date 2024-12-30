@@ -6,16 +6,15 @@ import { BlankView } from 'src/sections/blank/view';
 
 // ----------------------------------------------------------------------
 
-const metadata = { title: `Page Two | Dashboard - ${CONFIG.site.name}` };
+const metadata = { title: `Page Api | Dashboard - ${CONFIG.site.name}` };
 
 export default function Page() {
-  
   return (
     <>
       <Helmet>
         <title> {metadata.title}</title>
       </Helmet>
-  <BlankView/>
+      <BlankView />
     </>
   );
 }

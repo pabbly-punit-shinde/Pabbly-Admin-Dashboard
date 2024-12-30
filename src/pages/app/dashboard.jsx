@@ -14,12 +14,12 @@ import StatsCards from 'src/components/stats-card/stats-card';
 import PageHeader from 'src/components/page-header/page-header';
 import DashboardFolder from 'src/components/dashboard-folder/dashboard-folder';
 
-import AddDialog from 'src/sections/one/components/dialog/add-dialog';
+import AddDialog from 'src/sections/dashboard/components/dialog/add-dialog';
 import { UsersTable } from 'src/sections/users/components/table/users-table';
 
 // ----------------------------------------------------------------------
 
-const metadata = { title: `Page one | Dashboard - ${CONFIG.site.name}` };
+const metadata = { title: `Page Dashboard | Dashboard - ${CONFIG.site.name}` };
 const { items, style } = listItems;
 
 export default function Page() {

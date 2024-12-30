@@ -10,8 +10,8 @@ import { AuthGuard } from 'src/auth/guard';
 
 // ----------------------------------------------------------------------
 
-const IndexPage = lazy(() => import('src/pages/app/one'));
-const PageTwo = lazy(() => import('src/pages/app/two'));
+const IndexPage = lazy(() => import('src/pages/app/dashboard'));
+const PageTwo = lazy(() => import('src/pages/app/api'));
 const GetHelp = lazy(() => import('src/pages/app/get-help'));
 
 const Settings = lazy(() => import('src/pages/app/settings'));
@@ -34,9 +34,9 @@ export const dashboardRoutes = [
     element: CONFIG.auth.skip ? <>{layoutContent}</> : <AuthGuard>{layoutContent}</AuthGuard>,
     children: [
       { element: <IndexPage />, index: true },
-      { path: 'two', element: <PageTwo /> },
+      { path: 'Api', element: <PageTwo /> },
       { path: 'get-help', element: <GetHelp /> },
-     
+
       {
         path: 'settings',
         element: <Settings />,
@@ -44,7 +44,6 @@ export const dashboardRoutes = [
           // { element: <PageFour />, index: true },
           { path: 'timezone', element: <TimeZone /> },
           { path: 'api', element: <API /> },
-        
         ],
       },
     ],
