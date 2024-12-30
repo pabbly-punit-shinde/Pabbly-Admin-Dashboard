@@ -30,7 +30,7 @@ const layoutContent = (
 
 export const dashboardRoutes = [
   {
-    path: 'app',
+    path: 'admin',
     element: CONFIG.auth.skip ? <>{layoutContent}</> : <AuthGuard>{layoutContent}</AuthGuard>,
     children: [
       { element: <IndexPage />, index: true },

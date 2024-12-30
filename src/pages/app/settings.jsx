@@ -14,7 +14,7 @@ export default function Page() {
   const EXAMPLE_TABS = [
     {
       value: 'timzone',
-      path: '/app/settings/timezone',
+      path: '/admin/settings/timezone',
       icon: <Iconify icon="icons8:tasks" width={24} />,
       label: 'Time Zone',
       tooltip: 'Choose time zone',
@@ -23,7 +23,7 @@ export default function Page() {
     },
     {
       value: 'api',
-      path: '/app/settings/api',
+      path: '/admin/settings/api',
       icon: <Iconify icon="icons8:tasks" width={24} />,
       label: 'API',
       tooltip: 'View the API',
@@ -42,7 +42,7 @@ export default function Page() {
         <CustomTabs
           tabs={EXAMPLE_TABS}
           defaultTab="timezone"
-          defaultPath="/app/settings/timezone"
+          defaultPath="/admin/settings/timezone"
           dashboardContentProps={{ maxWidth: 'xl' }}
         />
       </DashboardContent>
