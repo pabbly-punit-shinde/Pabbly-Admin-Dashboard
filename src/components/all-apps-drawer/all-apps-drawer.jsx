@@ -37,7 +37,7 @@ const applications = [
   {
     title: 'Pabbly Subscription Billing',
     icon: '/assets/icons/appsicon/billing 2.svg',
-    tooltip: 'Start accepting dashboard-time and recurring subscription payments.',
+    tooltip: 'Start accepting one-time and recurring subscription payments.',
     link: 'https://accounts.pabbly.com/backend/access?project=pabbly-subscriptions',
   },
   {
@@ -98,11 +98,7 @@ export default function PabblyAppsMenu() {
 
   return (
     <>
-      <Tooltip
-        title="Easily access all your Pabbly application from here."
-        arrow
-        placement="bottom"
-      >
+      <Tooltip title="Easily access all your Pabbly application from here." arrow placement="bottom">
         <IconButton
           onClick={handleClick}
           sx={{

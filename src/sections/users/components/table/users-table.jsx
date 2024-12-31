@@ -44,15 +44,22 @@ const TABLE_HEAD = [
     label: 'ID',
     width: 'flex',
     whiteSpace: 'nowrap',
-    tooltip: 'Date and time when the email verification action occurred.',
+    tooltip: 'Default-Tooltip',
   },
 
   {
-    id: 'name',
-    label: 'Name',
+    id: 'first-name',
+    label: 'First Name',
     width: 'flex',
     whiteSpace: 'nowrap',
-    tooltip: 'Description of the email verification action or status update.',
+    tooltip: 'Default-Tooltip',
+  },
+  {
+    id: 'last-name',
+    label: 'Last Name',
+    width: 'flex',
+    whiteSpace: 'nowrap',
+    tooltip: 'Default-Tooltip',
   },
 
   {
@@ -60,8 +67,28 @@ const TABLE_HEAD = [
     label: 'Email',
     width: 'flex',
     whiteSpace: 'nowrap',
-
-    tooltip: 'Details for the action happened to list.',
+    tooltip: 'Default-Tooltip',
+  },
+  {
+    id: 'country',
+    label: 'Country',
+    width: 'flex',
+    whiteSpace: 'nowrap',
+    tooltip: 'Default-Tooltip',
+  },
+  {
+    id: 'project',
+    label: 'Project',
+    width: 'flex',
+    whiteSpace: 'nowrap',
+    tooltip: 'Default-Tooltip',
+  },
+  {
+    id: 'IP/Last-Logged-in-At',
+    label: 'IP/Last Logged in At',
+    width: 'flex',
+    whiteSpace: 'nowrap',
+    tooltip: 'Default-Tooltip',
   },
   {
     id: 'reg_date',
@@ -69,7 +96,7 @@ const TABLE_HEAD = [
     width: 'flex',
     whiteSpace: 'nowrap',
 
-    tooltip: 'Current state of the email verification credits.',
+    tooltip: 'Default-Tooltip',
   },
   {
     id: 'status',
@@ -77,7 +104,7 @@ const TABLE_HEAD = [
     width: 'flex',
     whiteSpace: 'nowrap',
     align: 'right',
-    tooltip: 'Current state of the email verification credits.',
+    tooltip: 'Default-Tooltip',
   },
 
   { id: '', width: 10 },
@@ -167,7 +194,7 @@ export function UsersTable() {
               disableInteractive
               title="View and manage all the users here."
             >
-              <Typography variant="h6">Manage Users</Typography>
+              <Typography variant="h6">Customers Sign-Up Activities</Typography>
             </Tooltip>
           </Box>
         }

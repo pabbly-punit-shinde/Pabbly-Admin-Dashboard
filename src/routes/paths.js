@@ -46,13 +46,20 @@ export const paths = {
   // app
   app: {
     root: ROOTS.app,
-    Api: `${ROOTS.app}/Api`,
-    gethelp: `${ROOTS.app}/get-help`,
+    api: `${ROOTS.app}/api`,
 
-    settings: {
-      root: `${ROOTS.app}/settings`,
-      timezone: `${ROOTS.app}/settings/timezone`,
-      api: `${ROOTS.app}/settings/api`,
+    customer: {
+      root: `${ROOTS.app}/customer`,
+      customers: `${ROOTS.app}/customer/customers`,
+      blockEmail: `${ROOTS.app}/customer/blockemail`,
+      updateEmail: `${ROOTS.app}/customer/updateemail`,
+      passwordReset: `${ROOTS.app}/customer/passwordreset`,
+    },
+
+    user: {
+      root: `${ROOTS.app}/user`,
+      users: `${ROOTS.app}/user/users`,
+      logs: `${ROOTS.app}/user/logs`,
     },
   },
 };

@@ -19,7 +19,7 @@ import { UsersTable } from 'src/sections/users/components/table/users-table';
 
 // ----------------------------------------------------------------------
 
-const metadata = { title: `Api | Admin - ${CONFIG.site.name}` };
+const metadata = { title: `Password Reset | Admin - ${CONFIG.site.name}` };
 const { items, style } = listItems;
 
 export default function Page() {
@@ -72,7 +72,7 @@ export default function Page() {
           }}
         >
           <PageHeader
-            title="Api"
+            title="Password Reset"
             Subheading="Subheading of the page showcasing the features of this page in relation to the entire application."
             link_added="#"
           />

@@ -14,12 +14,12 @@ import StatsCards from 'src/components/stats-card/stats-card';
 import PageHeader from 'src/components/page-header/page-header';
 import DashboardFolder from 'src/components/dashboard-folder/dashboard-folder';
 
-import AddDialog from 'src/sections/dashboard/components/dialog/add-dialog';
+import AddDialog from 'src/sections/one/components/dialog/add-dialog';
 import { UsersTable } from 'src/sections/users/components/table/users-table';
 
 // ----------------------------------------------------------------------
 
-const metadata = { title: `Page Dashboard | Dashboard - ${CONFIG.site.name}` };
+const metadata = { title: `Dashboard | Admin - ${CONFIG.site.name}` };
 const { items, style } = listItems;
 
 export default function Page() {
@@ -72,11 +72,11 @@ export default function Page() {
           }}
         >
           <PageHeader
-            title="Page Heading"
-            Subheading="Subheading of the page showcasing the features of this page in relation to the entire application."
+            title="Total Signups Stats (Project Additions)"
+            Subheading="This stats shows the total number of  people who signed up to any particular project. This stats also includes people who have migrated from a different application."
             link_added="#"
           />
-          <Tooltip
+          {/* <Tooltip
             title="Click here to add WhatsApp Number."
             arrow
             placement="top"
@@ -94,7 +94,7 @@ export default function Page() {
             >
               Add Button
             </Button>
-          </Tooltip>
+          </Tooltip> */}
         </Box>
         <Box
           sx={{
@@ -107,36 +107,43 @@ export default function Page() {
           }}
         >
           <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
+            cardtitle="Total Sign Ups"
+            cardstats="939652"
             icon_name="2card.png"
             icon_color="#FFA92E"
             bg_gradient="#FFA92E"
           />
           <StatsCards
-            cardtitle="WhatsApp Message "
-            cardstats="10,000"
+            cardtitle="Pabbly Connect"
+            cardstats="520197"
             icon_name="2card.png"
             icon_color="#FFA92E"
             bg_gradient="#FFA92E"
           />
           <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
+            cardtitle="Pabbly Subscription Billing"
+            cardstats="112617"
             icon_name="2card.png"
             icon_color="#FFA92E"
             bg_gradient="#FFA92E"
           />
           <StatsCards
-            cardtitle="WhatsApp "
-            cardstats="10,000"
+            cardtitle="Pabbly Form Builder"
+            cardstats="124056"
             icon_name="2card.png"
             icon_color="#FFA92E"
             bg_gradient="#FFA92E"
           />
           <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
+            cardtitle="Pabbly Email Marketing"
+            cardstats="112207"
+            icon_name="2card.png"
+            icon_color="#FFA92E"
+            bg_gradient="#FFA92E"
+          />
+          <StatsCards
+            cardtitle="Pabbly Email Verification"
+            cardstats="70575"
             icon_name="2card.png"
             icon_color="#FFA92E"
             bg_gradient="#FFA92E"
@@ -146,44 +153,47 @@ export default function Page() {
           sx={{
             // mt: 4,
             gap: 3,
-            display: 'flex',
+            display: 'col',
             flexDirection: { xs: 'column', md: 'row' },
             alignItems: 'stretch',
           }}
         >
-          <Box>
+          {/* <Box>
             <DashboardFolder />
-          </Box>
+          </Box> */}
           <Box width="100%">
             <Box>
+              <UsersTable />
+            </Box>
+          </Box>
+          <Box
+            width="100%"
+            sx={{
+              gap: 3,
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: 'stretch',
+            }}
+          >
+            <Box mt={3}>
               <BigCard
                 getHelp={false}
                 isVideo
-                bigcardtitle="Points To Remember!"
+                bigcardtitle="Sign-Up Links"
                 buttontitle="Add WhatsApp Number"
                 style={style}
                 items={items}
-                videoLink="https://www.youtube.com/embed/S-gpjyxqRZo?si=RraJU_Q1ht71Pk2T"
-                thumbnailName="Pabbly Plus-3-min.png"
-                action={
-                  <Button
-                    startIcon={
-                      <Iconify
-                        icon="heroicons:plus-circle-16-solid"
-                        style={{ width: 18, height: 18 }}
-                      />
-                    }
-                    variant="outlined"
-                    color="primary"
-                    size="large"
-                  >
-                    Action Button
-                  </Button>
-                }
               />
             </Box>
             <Box mt={3}>
-              <UsersTable />
+              <BigCard
+                getHelp={false}
+                isVideo
+                bigcardtitle="Login Links"
+                buttontitle="Add WhatsApp Number"
+                style={style}
+                items={items}
+              />
             </Box>
           </Box>
         </Box>

@@ -11,12 +11,17 @@ import { AuthGuard } from 'src/auth/guard';
 // ----------------------------------------------------------------------
 
 const IndexPage = lazy(() => import('src/pages/app/dashboard'));
-const PageTwo = lazy(() => import('src/pages/app/api'));
-const GetHelp = lazy(() => import('src/pages/app/get-help'));
+const ApiPage = lazy(() => import('src/pages/app/api'));
 
-const Settings = lazy(() => import('src/pages/app/settings'));
-const API = lazy(() => import('../../sections/settings-page/api'));
-const TimeZone = lazy(() => import('../../sections/settings-page/time-zone'));
+const UserPage = lazy(() => import('src/pages/app/user'));
+const UsersPage = lazy(() => import('src/pages/app/user/users'));
+const LogsPage = lazy(() => import('src/pages/app/user/logs'));
+
+const CustomerPage = lazy(() => import('src/pages/app/customer'));
+const CustomersPage = lazy(() => import('src/pages/app/customer/customers'));
+const PasswordResetPage = lazy(() => import('src/pages/app/customer/passwordReset'));
+const UpdateEmailPage = lazy(() => import('src/pages/app/customer/updateEmail'));
+const BlockEmailPage = lazy(() => import('src/pages/app/customer/blockEmail'));
 
 // ----------------------------------------------------------------------
 
@@ -34,16 +39,24 @@ export const dashboardRoutes = [
     element: CONFIG.auth.skip ? <>{layoutContent}</> : <AuthGuard>{layoutContent}</AuthGuard>,
     children: [
       { element: <IndexPage />, index: true },
-      { path: 'Api', element: <PageTwo /> },
-      { path: 'get-help', element: <GetHelp /> },
+      { path: 'api', element: <ApiPage /> },
 
       {
-        path: 'settings',
-        element: <Settings />,
+        path: 'customer',
         children: [
-          // { element: <PageFour />, index: true },
-          { path: 'timezone', element: <TimeZone /> },
-          { path: 'api', element: <API /> },
+          { element: <CustomerPage />, index: true },
+          { path: 'customers', element: <CustomersPage /> },
+          { path: 'passwordreset', element: <PasswordResetPage/>},
+          { path: 'updateemail', element: <UpdateEmailPage /> },
+          { path: 'blockemail', element: <BlockEmailPage /> },
+        ],
+      },
+      {
+        path: 'user',
+        children: [
+          { element: <UserPage />, index: true },
+          { path: 'users', element: <UsersPage /> },
+          { path: 'logs', element: <LogsPage /> },
         ],
       },
     ],
