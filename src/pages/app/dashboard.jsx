@@ -2,17 +2,15 @@ import { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { Helmet } from 'react-helmet-async';
 
-import { Box, Alert, Button, Tooltip, Snackbar, useMediaQuery } from '@mui/material';
+import { Box, Alert, Button, Snackbar, useMediaQuery } from '@mui/material';
 
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { listItems } from 'src/_mock/big-card/_dashboardBigCardListItems';
 
-import { Iconify } from 'src/components/iconify';
 import BigCard from 'src/components/big-card/big-card';
 import StatsCards from 'src/components/stats-card/stats-card';
 import PageHeader from 'src/components/page-header/page-header';
-import DashboardFolder from 'src/components/dashboard-folder/dashboard-folder';
 
 import AddDialog from 'src/sections/one/components/dialog/add-dialog';
 import { UsersTable } from 'src/sections/users/components/table/users-table';
@@ -72,8 +70,8 @@ export default function Page() {
           }}
         >
           <PageHeader
-            title="Total Signups Stats (Project Additions)"
-            Subheading="This stats shows the total number of  people who signed up to any particular project. This stats also includes people who have migrated from a different application."
+            title="Dashboard"
+            Subheading="Displays key metrics including total signups (with migration data), customer details, and quick access to signup and login links."
             link_added="#"
           />
           {/* <Tooltip
@@ -108,45 +106,59 @@ export default function Page() {
         >
           <StatsCards
             cardtitle="Total Sign Ups"
-            cardstats="939652"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
+            cardstats="939659"
+            icon_name="allapps.svg"
+            icon_color="#CE5C5C"
+            bg_gradient="#CE5C5C"
           />
           <StatsCards
             cardtitle="Pabbly Connect"
             cardstats="520197"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
+            icon_name="pc.svg"
+            icon_color="#1D88FA"
+            bg_gradient="#1D88FA"
           />
           <StatsCards
             cardtitle="Pabbly Subscription Billing"
             cardstats="112617"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
+            icon_name="psb.svg"
+            icon_color="#FF3B90"
+            bg_gradient="#FF3B90"
           />
           <StatsCards
             cardtitle="Pabbly Form Builder"
             cardstats="124056"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
+            icon_name="pfb.svg"
+            icon_color="#E39806"
+            bg_gradient="#E39806"
           />
           <StatsCards
             cardtitle="Pabbly Email Marketing"
             cardstats="112207"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
+            icon_name="pem.svg"
+            icon_color="#6F4CFC"
+            bg_gradient="#6F4CFC"
+          />
+          <StatsCards
+            cardtitle="Pabbly Hook"
+            cardstats="0"
+            icon_name="ph.svg"
+            icon_color="#05A6C6"
+            bg_gradient="#05A6C6"
+          />
+          <StatsCards
+            cardtitle="Pabbly Chatflow"
+            cardstats="7"
+            icon_name="pcf.svg"
+            icon_color="#A21FDF"
+            bg_gradient="#A21FDF"
           />
           <StatsCards
             cardtitle="Pabbly Email Verification"
             cardstats="70575"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
+            icon_name="pev.svg"
+            icon_color="#05C95F"
+            bg_gradient="#05C95F"
           />
         </Box>
         <Box
