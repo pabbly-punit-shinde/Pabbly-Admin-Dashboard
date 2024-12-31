@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet-async';
 
 import { Box, Alert, Button, Snackbar, useMediaQuery } from '@mui/material';
 
+import { EcommerceLatestProducts } from 'src/routes/sections/overview/ecommerce-latest-products';
+
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { listItems } from 'src/_mock/big-card/_dashboardBigCardListItems';
@@ -187,25 +189,11 @@ export default function Page() {
               alignItems: 'stretch',
             }}
           >
-            <Box mt={3}>
-              <BigCard
-                getHelp={false}
-                isVideo
-                bigcardtitle="Sign-Up Links"
-                buttontitle="Add WhatsApp Number"
-                style={style}
-                items={items}
-              />
+            <Box mt={3}  width="50%">
+              <EcommerceLatestProducts title="Sign-up Links"/>
             </Box>
-            <Box mt={3}>
-              <BigCard
-                getHelp={false}
-                isVideo
-                bigcardtitle="Login Links"
-                buttontitle="Add WhatsApp Number"
-                style={style}
-                items={items}
-              />
+            <Box mt={3}  width="50%">
+            <EcommerceLatestProducts title="Login Links"/>
             </Box>
           </Box>
         </Box>
