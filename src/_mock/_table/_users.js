@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------
 
 export const USERS_STATUS_OPTIONS = [
-  { value: 'active', label: 'Active' },
+  { value: 'verified', label: 'Verified' },
 
-  { value: 'inactive', label: 'Inactive' },
+  { value: 'unverified', label: 'Unverified' },
 ];

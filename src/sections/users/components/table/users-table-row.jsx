@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import {
@@ -10,6 +9,7 @@ import {
   Checkbox,
   IconButton,
   Typography,
+  ListItemText,
 } from '@mui/material';
 
 import { Label } from 'src/components/label';
@@ -50,13 +50,8 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
         </TableCell>
 
         {/* First Name */}
-        <TableCell width={300}>
-          <Tooltip
-            arrow
-            placement="top"
-            disableInteractive
-            title={`First Name: ${row.firstName}.`}
-          >
+        <TableCell>
+          <Tooltip arrow placement="top" disableInteractive title={`First Name: ${row.firstName}.`}>
             <Typography
               variant="subtitle2"
               sx={{
@@ -75,13 +70,8 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
         </TableCell>
 
         {/* Last Name */}
-        <TableCell width={300}>
-          <Tooltip
-            arrow
-            placement="top"
-            disableInteractive
-            title={`Last Name: ${row.lastName}.`}
-          >
+        <TableCell>
+          <Tooltip arrow placement="top" disableInteractive title={`Last Name: ${row.lastName}.`}>
             <Typography
               variant="subtitle2"
               sx={{
@@ -100,13 +90,8 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
         </TableCell>
 
         {/* Email */}
-        <TableCell width={340}>
-          <Tooltip
-            arrow
-            placement="top"
-            disableInteractive
-            title={`Email: ${row.email}.`}
-          >
+        <TableCell>
+          <Tooltip arrow placement="top" disableInteractive title={`Email: ${row.email}.`}>
             <Box
               component="span"
               sx={{
@@ -124,13 +109,8 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
         </TableCell>
 
         {/* Country */}
-        <TableCell width={140}>
-          <Tooltip
-            arrow
-            placement="top"
-            disableInteractive
-            title={`Email: ${row.country}.`}
-          >
+        <TableCell>
+          <Tooltip arrow placement="top" disableInteractive title={`Email: ${row.country}.`}>
             <Box
               component="span"
               sx={{
@@ -148,85 +128,133 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
         </TableCell>
 
         {/* Project */}
-        <TableCell width={140}>
-          <Tooltip
-            arrow
-            placement="top"
-            disableInteractive
-            title={`Email: ${row.project}.`}
-          >
-            <Box
-              component="span"
-              sx={{
-                color: 'text.primary',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                maxWidth: '300px',
-                display: 'inline-block',
-              }}
-            >
-              {row.project}
-            </Box>
+        <TableCell>
+          <Tooltip arrow placement="top" disableInteractive title={`Email: ${row.project}.`}>
+            <ListItemText
+              disableTypography
+              primary={
+                <Box
+                  component="span"
+                  sx={{
+                    color: 'text.primary',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'wrap',
+                    maxWidth: '300px',
+                    display: 'inline-block',
+                  }}
+                >
+                  {row.project}
+                </Box>
+              }
+              secondary={
+                <Box
+                  component="span"
+                  sx={{
+                    color: 'text.secondary',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'wrap',
+                    maxWidth: '300px',
+                    display: 'inline-block',
+                  }}
+                >
+                  {row.projectCreated}
+                </Box>
+              }
+              sx={{ display: 'flex', flexDirection: 'column' }}
+            />
           </Tooltip>
         </TableCell>
 
         {/* ipCreatedAt */}
-        <TableCell width={340}>
-          <Tooltip
-            arrow
-            placement="top"
-            disableInteractive
-            title={`Email: ${row.ipCreatedAt}.`}
-          >
-            <Box
-              component="span"
-              sx={{
-                color: 'text.primary',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                maxWidth: '300px',
-                display: 'inline-block',
-              }}
-            >
-              {row.ipCreatedAt}
-            </Box>
+        <TableCell>
+          <Tooltip arrow placement="top" disableInteractive title={`Email: ${row.ipCreatedAt}.`}>
+            <ListItemText
+              disableTypography
+              primary={
+                <Box
+                  component="span"
+                  sx={{
+                    color: 'text.primary',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'wrap',
+                    maxWidth: '300px',
+                    display: 'inline-block',
+                  }}
+                >
+                  {row.ipCreatedAt}
+                </Box>
+              }
+              secondary={
+                <Box
+                  component="span"
+                  sx={{
+                    color: 'text.secondary',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'wrap',
+                    maxWidth: '300px',
+                    display: 'inline-block',
+                  }}
+                >
+                  {row.ipCreatedOn}
+                </Box>
+              }
+              sx={{ display: 'flex', flexDirection: 'column' }}
+            />
           </Tooltip>
         </TableCell>
 
         {/* ipLastLoggedinAt */}
-        <TableCell width={340}>
+        <TableCell>
           <Tooltip
             arrow
             placement="top"
             disableInteractive
             title={`Email: ${row.ipLastLoggedinAt}.`}
           >
-            <Box
-              component="span"
-              sx={{
-                color: 'text.primary',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                maxWidth: '300px',
-                display: 'inline-block',
-              }}
-            >
-              {row.ipLastLoggedinAt}
-            </Box>
+            <ListItemText
+              disableTypography
+              primary={
+                <Box
+                  component="span"
+                  sx={{
+                    color: 'text.primary',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'wrap',
+                    maxWidth: '300px',
+                    display: 'inline-block',
+                  }}
+                >
+                  {row.ipLastLoggedinAt}
+                </Box>
+              }
+              secondary={
+                <Box
+                  component="span"
+                  sx={{
+                    color: 'text.secondary',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'wrap',
+                    maxWidth: '300px',
+                    display: 'inline-block',
+                  }}
+                >
+                  {row.ipLastLoggedOn}
+                </Box>
+              }
+              sx={{ display: 'flex', flexDirection: 'column' }}
+            />
           </Tooltip>
         </TableCell>
 
         {/* refrer */}
-        <TableCell width={540}>
-          <Tooltip
-            arrow
-            placement="top"
-            disableInteractive
-            title={`Email: ${row.refrer}.`}
-          >
+        <TableCell>
+          <Tooltip arrow placement="top" disableInteractive title={`Email: ${row.refrer}.`}>
             <Box
               component="span"
               sx={{
@@ -243,32 +271,8 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
           </Tooltip>
         </TableCell>
 
-        {/* Registration Date */}
-        <TableCell width={640}>
-          <Tooltip
-            arrow
-            placement="top"
-            disableInteractive
-            title={`Registration Date: ${row.regDate}${timezone}.`}
-          >
-            <Box
-              component="span"
-              sx={{
-                color: 'text.primary',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                maxWidth: '300px',
-                display: 'inline-block',
-              }}
-            >
-              {row.regDate}
-            </Box>
-          </Tooltip>
-        </TableCell>
-
         {/* Status */}
-        <TableCell width={140}>
+        <TableCell align="right">
           <Tooltip
             arrow
             placement="top"
@@ -308,8 +312,15 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
       >
         <MenuList>
           <Tooltip title="Update this user" arrow placement="left">
-            <MenuItem sx={{ color: 'secondary.main' }}>
-              <Iconify icon="material-symbols:settings-b-roll-rounded" />
+            <MenuItem sx={{ color: 'main' }}>
+              <Iconify icon="material-symbols:login" />
+              Login As 
+            </MenuItem>
+          </Tooltip>
+
+          <Tooltip title="Update this user" arrow placement="left">
+            <MenuItem sx={{ color: 'main' }}>
+              <Iconify icon="material-symbols:person-cancel-rounded" />
               Unverify
             </MenuItem>
           </Tooltip>
@@ -318,8 +329,8 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
 
           <Tooltip title="Delete this user" arrow placement="left">
             <MenuItem sx={{ color: 'error.main' }}>
-              <Iconify icon="solar:trash-bin-trash-bold" />
-              Delete
+              <Iconify icon="material-symbols:block" />
+              Block
             </MenuItem>
           </Tooltip>
         </MenuList>

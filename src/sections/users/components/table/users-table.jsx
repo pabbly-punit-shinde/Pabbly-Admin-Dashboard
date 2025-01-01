@@ -9,8 +9,6 @@ import { Tab, Tabs, Divider, Tooltip, CardHeader, Typography } from '@mui/materi
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useSetState } from 'src/hooks/use-set-state';
 
-import { fIsBetween } from 'src/utils/format-time';
-
 import { varAlpha } from 'src/theme/styles';
 import { USERS_STATUS_OPTIONS } from 'src/_mock/_table/_users';
 
@@ -70,7 +68,7 @@ const TABLE_HEAD = [
   },
   {
     id: 'project',
-    label: 'Project',
+    label: 'Project/Created At',
     width: 'flex',
     whiteSpace: 'nowrap',
     tooltip: 'Default-Tooltip',
@@ -110,38 +108,91 @@ const TABLE_HEAD = [
 
 const dataOn = [
   {
-    firstName: 'Ankit',
-    lastName: 'Mandli',
-    email: 'ankit.mandli@pabbly.com',
+    firstName: 'Rahul',
+    lastName: 'Kapoor',
+    email: 'rahul.kapoor@example.com',
     country: 'India',
     project: 'Connect',
-    ipCreatedAt: '172.71.124.233 \n Jan 01, 2025 10:07 AM',
-    ipLastLoggedinAt: '172.68.225.73 Jan 01, 2025 10:03 AM',
-    refrer: 'Rajpal Singh Tomar',
-    status: 'Verified',
-  },
-  {
-    firstName: 'Sourabh',
-    lastName: 'Thakur',
-    email: 'sourabh.thakur@pabbly.com',
+    projectCreated: 'January 01, 2025 09:30 AM',
+    ipCreatedAt: '192.168.1.1',
+    ipCreatedOn: 'Jan 01, 2025 09:30 AM',
+    ipLastLoggedinAt: '192.168.1.2',
+    ipLastLoggedOn: 'Jan 01, 2025 10:00 AM',
+    refrer: 'Nitin Verma',
+    status: 'unverified',
+},
+{
+    firstName: 'Priya',
+    lastName: 'Mehta',
+    email: 'priya.mehta@example.com',
+    country: 'India',
+    project: 'Subscription',
+    projectCreated: 'January 01, 2025 11:15 AM',
+    ipCreatedAt: '172.16.0.1',
+    ipCreatedOn: 'Jan 01, 2025 11:15 AM',
+    ipLastLoggedinAt: '172.16.0.2',
+    ipLastLoggedOn: 'Jan 01, 2025 11:45 AM',
+    refrer: 'Suman Gupta',
+    status: 'verified',
+},
+{
+    firstName: 'Ankush',
+    lastName: 'Sharma',
+    email: 'ankush.sharma@example.com',
+    country: 'India',
+    project: 'Form Builder',
+    projectCreated: 'January 01, 2025 01:05 PM',
+    ipCreatedAt: '10.0.0.1',
+    ipCreatedOn: 'Jan 01, 2025 01:05 PM',
+    ipLastLoggedinAt: '10.0.0.2',
+    ipLastLoggedOn: 'Jan 01, 2025 01:35 PM',
+    refrer: 'Anjali Singh',
+    status: 'verified',
+},
+{
+    firstName: 'Deepa',
+    lastName: 'Rao',
+    email: 'deepa.rao@example.com',
+    country: 'India',
+    project: 'Email Marketing',
+    projectCreated: 'January 01, 2025 02:20 PM',
+    ipCreatedAt: '172.31.255.255',
+    ipCreatedOn: 'Jan 01, 2025 02:20 PM',
+    ipLastLoggedinAt: '172.31.255.254',
+    ipLastLoggedOn: 'Jan 01, 2025 02:50 PM',
+    refrer: 'Karthik Reddy',
+    status: 'unverified',
+},
+{
+    firstName: 'Ravi',
+    lastName: 'Naik',
+    email: 'ravi.naik@example.com',
     country: 'India',
     project: 'Connect',
-    ipCreatedAt: '172.71.124.233 Jan 01, 2025 10:07 AM',
-    ipLastLoggedinAt: '172.68.225.73 Jan 01, 2025 10:03 AM',
-    refrer: 'Rajpal Singh Tomar',
-    status: 'Verified',
-  },
-  {
-    firstName: 'Punit',
-    lastName: 'Shinde',
-    email: 'punit.shinde@pabbly.com',
+    projectCreated: 'January 01, 2025 03:45 PM',
+    ipCreatedAt: '203.0.113.1',
+    ipCreatedOn: 'Jan 01, 2025 03:45 PM',
+    ipLastLoggedinAt: '203.0.113.2',
+    ipLastLoggedOn: 'Jan 01, 2025 04:15 PM',
+    refrer: 'Sunita Jain',
+    status: 'verified',
+},
+{
+    firstName: 'Sana',
+    lastName: 'Patel',
+    email: 'sana.patel@example.com',
     country: 'India',
-    project: 'Connect',
-    ipCreatedAt: '172.71.124.233 \n Jan 01, 2025 10:07 AM',
-    ipLastLoggedinAt: '172.68.225.73\n Jan 01, 2025 10:03 AM',
-    refrer: 'Rajpal Singh Tomar',
-    status: 'Verified',
-  },
+    project: 'Subscription',
+    projectCreated: 'January 01, 2025 05:30 PM',
+    ipCreatedAt: '198.51.100.1',
+    ipCreatedOn: 'Jan 01, 2025 05:30 PM',
+    ipLastLoggedinAt: '198.51.100.2',
+    ipLastLoggedOn: 'Jan 01, 2025 06:00 PM',
+    refrer: 'Amit Kumar',
+    status: 'verified',
+}
+
+
 ];
 
 // ----------------------------------------------------------------------
@@ -234,10 +285,10 @@ export function UsersTable() {
                   'soft'
                 }
                 color={
-                  (tab.value === 'verified' && 'success') ||
-                  (tab.value === 'unverified' && 'error') ||
+                  tab.value === 'verified' ? 'success' :
+                  tab.value === 'unverified' ? 'error' :
                   'default'
-                }
+                }                
               >
                 {['verified', 'unverified'].includes(tab.value)
                   ? tableData.filter((user) => user.status === tab.value).length

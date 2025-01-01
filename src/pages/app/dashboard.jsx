@@ -96,8 +96,8 @@ export default function Page() {
           </Tooltip> */}
         </Box>
         <Box
+          mt={4}
           sx={{
-            mt: '40px',
             mb: '24px',
             gap: 3,
             display: 'grid',
@@ -188,11 +188,11 @@ export default function Page() {
               alignItems: 'stretch',
             }}
           >
-            <Box mt={3}  width="50%">
-              <EcommerceLatestProducts title="Sign-up Links"/>
+            <Box mt={3} width="50%">
+              <EcommerceLatestProducts title="Sign-up Links" />
             </Box>
-            <Box mt={3}  width="50%">
-            <EcommerceLatestProducts title="Login Links"/>
+            <Box mt={3} width="50%">
+              <EcommerceLatestProducts title="Login Links" />
             </Box>
           </Box>
         </Box>
