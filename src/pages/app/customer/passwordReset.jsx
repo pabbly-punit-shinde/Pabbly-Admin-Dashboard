@@ -73,10 +73,10 @@ export default function Page() {
         >
           <PageHeader
             title="Password Reset"
-            Subheading="Subheading of the page showcasing the features of this page in relation to the entire application."
+            Subheading="You can reset your password here"
             link_added="#"
           />
-          <Tooltip
+          {/* <Tooltip
             title="Click here to add WhatsApp Number."
             arrow
             placement="top"
@@ -94,9 +94,10 @@ export default function Page() {
             >
               Add Button
             </Button>
-          </Tooltip>
+          </Tooltip> */}
         </Box>
         <Box
+        
           sx={{
             mt: '40px',
             mb: '24px',
