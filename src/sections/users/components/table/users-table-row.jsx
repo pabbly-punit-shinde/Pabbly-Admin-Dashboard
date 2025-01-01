@@ -24,14 +24,15 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'active':
+      case 'verified':
         return 'success';
-      case 'inactive':
+      case 'unverified':
         return 'error';
       default:
         return 'default';
     }
   };
+
   const getStatusLabel = (status) => status.charAt(0).toUpperCase() + status.slice(1);
 
   return (
@@ -41,74 +42,70 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
           <Checkbox
             checked={selected}
             onChange={(event) => {
-              event.stopPropagation(); // Keep this if you need to prevent row click events
-              onSelectRow(); // This will now work properly
+              event.stopPropagation();
+              onSelectRow();
             }}
             inputProps={{ 'aria-labelledby': row.id }}
           />
         </TableCell>
-        <TableCell width={100}>
-          <Stack spacing={2} direction="row" alignItems="center">
-            <Tooltip arrow placement="top" disableInteractive title={`ID of the user: ${row.id}.`}>
-              <Box
-                component="span"
-                sx={{
-                  color: 'text.primary',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                  maxWidth: '100px',
-                  display: 'inline-block',
-                }}
-              >
-                {row.id}
-              </Box>
-            </Tooltip>
-          </Stack>
-        </TableCell>
 
+        {/* First Name */}
         <TableCell width={300}>
-          <Stack direction="row" alignItems="center" spacing={2}>
-            <Tooltip
-              arrow
-              placement="top"
-              disableInteractive
-              title={`Name of the user: ${row.name}.`}
+          <Tooltip
+            arrow
+            placement="top"
+            disableInteractive
+            title={`First Name: ${row.firstName}.`}
+          >
+            <Typography
+              variant="subtitle2"
+              sx={{
+                cursor: 'pointer',
+                '&:hover': { textDecoration: 'underline' },
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                maxWidth: '200px',
+              }}
+              onClick={() => onNameClick(row.firstName)}
             >
-              <Box
-                component="span"
-                sx={{
-                  color: 'text.primary',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                  maxWidth: '200px',
-                  display: 'inline-block',
-                }}
-              >
-                <Typography
-                  variant="subtitle2"
-                  sx={{
-                    cursor: 'pointer',
-                    '&:hover': {
-                      textDecoration: 'underline',
-                    },
-                  }}
-                  onClick={() => onNameClick(row.name)}
-                >
-                  {row.name}
-                </Typography>
-              </Box>
-            </Tooltip>
-          </Stack>
+              {row.firstName}
+            </Typography>
+          </Tooltip>
         </TableCell>
 
+        {/* Last Name */}
+        <TableCell width={300}>
+          <Tooltip
+            arrow
+            placement="top"
+            disableInteractive
+            title={`Last Name: ${row.lastName}.`}
+          >
+            <Typography
+              variant="subtitle2"
+              sx={{
+                cursor: 'pointer',
+                '&:hover': { textDecoration: 'underline' },
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                maxWidth: '200px',
+              }}
+              onClick={() => onNameClick(row.lastName)}
+            >
+              {row.lastName}
+            </Typography>
+          </Tooltip>
+        </TableCell>
+
+        {/* Email */}
         <TableCell width={340}>
           <Tooltip
             arrow
             placement="top"
             disableInteractive
-            title={`Email of the user: ${row.email}.`}
+            title={`Email: ${row.email}.`}
           >
             <Box
               component="span"
@@ -126,12 +123,133 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
           </Tooltip>
         </TableCell>
 
+        {/* Country */}
         <TableCell width={140}>
           <Tooltip
             arrow
             placement="top"
             disableInteractive
-            title={`Registration date of the user: ${row.regDate}${timezone}.`}
+            title={`Email: ${row.country}.`}
+          >
+            <Box
+              component="span"
+              sx={{
+                color: 'text.primary',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                maxWidth: '300px',
+                display: 'inline-block',
+              }}
+            >
+              {row.country}
+            </Box>
+          </Tooltip>
+        </TableCell>
+
+        {/* Project */}
+        <TableCell width={140}>
+          <Tooltip
+            arrow
+            placement="top"
+            disableInteractive
+            title={`Email: ${row.project}.`}
+          >
+            <Box
+              component="span"
+              sx={{
+                color: 'text.primary',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                maxWidth: '300px',
+                display: 'inline-block',
+              }}
+            >
+              {row.project}
+            </Box>
+          </Tooltip>
+        </TableCell>
+
+        {/* ipCreatedAt */}
+        <TableCell width={340}>
+          <Tooltip
+            arrow
+            placement="top"
+            disableInteractive
+            title={`Email: ${row.ipCreatedAt}.`}
+          >
+            <Box
+              component="span"
+              sx={{
+                color: 'text.primary',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                maxWidth: '300px',
+                display: 'inline-block',
+              }}
+            >
+              {row.ipCreatedAt}
+            </Box>
+          </Tooltip>
+        </TableCell>
+
+        {/* ipLastLoggedinAt */}
+        <TableCell width={340}>
+          <Tooltip
+            arrow
+            placement="top"
+            disableInteractive
+            title={`Email: ${row.ipLastLoggedinAt}.`}
+          >
+            <Box
+              component="span"
+              sx={{
+                color: 'text.primary',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                maxWidth: '300px',
+                display: 'inline-block',
+              }}
+            >
+              {row.ipLastLoggedinAt}
+            </Box>
+          </Tooltip>
+        </TableCell>
+
+        {/* refrer */}
+        <TableCell width={540}>
+          <Tooltip
+            arrow
+            placement="top"
+            disableInteractive
+            title={`Email: ${row.refrer}.`}
+          >
+            <Box
+              component="span"
+              sx={{
+                color: 'text.primary',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                maxWidth: '300px',
+                display: 'inline-block',
+              }}
+            >
+              {row.refrer}
+            </Box>
+          </Tooltip>
+        </TableCell>
+
+        {/* Registration Date */}
+        <TableCell width={640}>
+          <Tooltip
+            arrow
+            placement="top"
+            disableInteractive
+            title={`Registration Date: ${row.regDate}${timezone}.`}
           >
             <Box
               component="span"
@@ -149,12 +267,13 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
           </Tooltip>
         </TableCell>
 
-        <TableCell width={140} align="right">
+        {/* Status */}
+        <TableCell width={140}>
           <Tooltip
             arrow
             placement="top"
             disableInteractive
-            title={`Status of user is: ${row.status === 'active' ? `Active` : `Inactive`}`}
+            title={`User Status: ${row.status === 'verified' ? 'Verified' : 'Unverified'}`}
           >
             <Label
               variant="soft"
@@ -165,18 +284,22 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
             </Label>
           </Tooltip>
         </TableCell>
+
+        {/* Actions */}
         <TableCell
           align="right"
           sx={{ px: 1, whiteSpace: 'nowrap' }}
           onClick={(e) => e.stopPropagation()}
         >
-          <Tooltip title="Click to see options." arrow placement="top">
+          <Tooltip title="More actions" arrow placement="top">
             <IconButton color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
               <Iconify icon="eva:more-vertical-fill" />
             </IconButton>
           </Tooltip>
         </TableCell>
       </TableRow>
+
+      {/* Popover Menu */}
       <CustomPopover
         open={popover.open}
         anchorEl={popover.anchorEl}
@@ -184,16 +307,16 @@ export function UsersTableRow({ row, selected, onSelectRow, onNameClick }) {
         slotProps={{ arrow: { placement: 'right-top' } }}
       >
         <MenuList>
-          <Tooltip title="Update connection." arrow placement="left">
-            <MenuItem sx={{ color: 'secondary' }}>
+          <Tooltip title="Update this user" arrow placement="left">
+            <MenuItem sx={{ color: 'secondary.main' }}>
               <Iconify icon="material-symbols:settings-b-roll-rounded" />
-              Update
+              Unverify
             </MenuItem>
           </Tooltip>
 
           <Divider style={{ borderStyle: 'dashed' }} />
 
-          <Tooltip title="Delete connection." arrow placement="left">
+          <Tooltip title="Delete this user" arrow placement="left">
             <MenuItem sx={{ color: 'error.main' }}>
               <Iconify icon="solar:trash-bin-trash-bold" />
               Delete

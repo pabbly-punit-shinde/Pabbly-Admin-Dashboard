@@ -40,22 +40,14 @@ const STATUS_OPTIONS = [
 ];
 const TABLE_HEAD = [
   {
-    id: 'id',
-    label: 'ID',
-    width: 'flex',
-    whiteSpace: 'nowrap',
-    tooltip: 'Default-Tooltip',
-  },
-
-  {
-    id: 'first-name',
+    id: 'firstName',
     label: 'First Name',
     width: 'flex',
     whiteSpace: 'nowrap',
     tooltip: 'Default-Tooltip',
   },
   {
-    id: 'last-name',
+    id: 'lastName',
     label: 'Last Name',
     width: 'flex',
     whiteSpace: 'nowrap',
@@ -84,18 +76,24 @@ const TABLE_HEAD = [
     tooltip: 'Default-Tooltip',
   },
   {
-    id: 'IP/Last-Logged-in-At',
+    id: 'ipCreatedAt',
+    label: 'IP/Created At',
+    width: 'flex',
+    whiteSpace: 'nowrap',
+    tooltip: 'Default-Tooltip',
+  },
+  {
+    id: 'ipLastLoggedinAt',
     label: 'IP/Last Logged in At',
     width: 'flex',
     whiteSpace: 'nowrap',
     tooltip: 'Default-Tooltip',
   },
   {
-    id: 'reg_date',
-    label: 'Reg. Date',
+    id: 'refrer',
+    label: 'Refrer',
     width: 'flex',
     whiteSpace: 'nowrap',
-
     tooltip: 'Default-Tooltip',
   },
   {
@@ -112,28 +110,37 @@ const TABLE_HEAD = [
 
 const dataOn = [
   {
-    id: '565743434',
-    name: 'Ankit Mandli',
+    firstName: 'Ankit',
+    lastName: 'Mandli',
     email: 'ankit.mandli@pabbly.com',
-
-    regDate: 'Oct 23, 2024 17:45:32',
-    status: 'active',
+    country: 'India',
+    project: 'Connect',
+    ipCreatedAt: '172.71.124.233 \n Jan 01, 2025 10:07 AM',
+    ipLastLoggedinAt: '172.68.225.73 Jan 01, 2025 10:03 AM',
+    refrer: 'Rajpal Singh Tomar',
+    status: 'Verified',
   },
   {
-    id: '565743434',
-    name: 'Abhishek Nagar',
-    email: 'ankit.mandli@pabbly.com',
-
-    regDate: 'Oct 23, 2024 17:45:32',
-    status: 'active',
+    firstName: 'Sourabh',
+    lastName: 'Thakur',
+    email: 'sourabh.thakur@pabbly.com',
+    country: 'India',
+    project: 'Connect',
+    ipCreatedAt: '172.71.124.233 Jan 01, 2025 10:07 AM',
+    ipLastLoggedinAt: '172.68.225.73 Jan 01, 2025 10:03 AM',
+    refrer: 'Rajpal Singh Tomar',
+    status: 'Verified',
   },
   {
-    id: '565743434',
-    name: 'Rajendra Jatav',
-    email: 'ankit.mandli@pabbly.com',
-
-    regDate: 'Oct 23, 2024 17:45:32',
-    status: 'active',
+    firstName: 'Punit',
+    lastName: 'Shinde',
+    email: 'punit.shinde@pabbly.com',
+    country: 'India',
+    project: 'Connect',
+    ipCreatedAt: '172.71.124.233 \n Jan 01, 2025 10:07 AM',
+    ipLastLoggedinAt: '172.68.225.73\n Jan 01, 2025 10:03 AM',
+    refrer: 'Rajpal Singh Tomar',
+    status: 'Verified',
   },
 ];
 
@@ -227,12 +234,12 @@ export function UsersTable() {
                   'soft'
                 }
                 color={
-                  (tab.value === 'active' && 'success') ||
-                  (tab.value === 'inactive' && 'error') ||
+                  (tab.value === 'verified' && 'success') ||
+                  (tab.value === 'unverified' && 'error') ||
                   'default'
                 }
               >
-                {['active', 'inactive'].includes(tab.value)
+                {['verified', 'unverified'].includes(tab.value)
                   ? tableData.filter((user) => user.status === tab.value).length
                   : tableData.length}
               </Label>
@@ -333,31 +340,29 @@ export function UsersTable() {
   );
 }
 
-function applyFilter({ inputData, comparator, filters, dateError }) {
+function applyFilter({ inputData, comparator, filters }) {
   const { status, name, startDate, endDate } = filters;
 
   let filteredData = inputData;
 
-  // Filter by message (name)
+  // Filter by name (firstName or lastName)
   if (name) {
+    const lowerName = name.toLowerCase();
     filteredData = filteredData.filter(
-      (order) => order.message && order.message.toLowerCase().includes(name.toLowerCase())
+      (user) =>
+        user.firstName.toLowerCase().includes(lowerName) ||
+        user.lastName.toLowerCase().includes(lowerName)
     );
   }
 
   // Filter by status
   if (status !== 'all') {
-    filteredData = filteredData.filter((order) => order.status === status);
+    filteredData = filteredData.filter((user) => user.status.toLowerCase() === status);
   }
 
-  // Filter by date range
-  if (!dateError) {
-    if (startDate && endDate) {
-      filteredData = filteredData.filter((order) =>
-        fIsBetween(new Date(order.dateCreatedOn), startDate, endDate)
-      );
-    }
-  }
+  // Apply sorting
+  filteredData = filteredData.sort(comparator);
 
   return filteredData;
 }
+
