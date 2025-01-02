@@ -14,14 +14,14 @@ const IndexPage = lazy(() => import('src/pages/app/dashboard'));
 const ApiPage = lazy(() => import('src/pages/app/api'));
 
 const UserPage = lazy(() => import('src/pages/app/user'));
-const UsersPage = lazy(() => import('src/pages/app/user/users'));
-const LogsPage = lazy(() => import('src/pages/app/user/logs'));
+const UsersPage = lazy(() => import('src/sections/user/users'));
+const LogsPage = lazy(() => import('src/sections/user/logs'));
 
 const CustomerPage = lazy(() => import('src/pages/app/customer'));
-const CustomersPage = lazy(() => import('src/pages/app/customer/customers'));
-const PasswordResetPage = lazy(() => import('src/pages/app/customer/passwordReset'));
-const UpdateEmailPage = lazy(() => import('src/pages/app/customer/updateEmail'));
-const BlockEmailPage = lazy(() => import('src/pages/app/customer/blockEmail'));
+const CustomersPage = lazy(() => import('src/sections/customer/customers'));
+const PasswordResetPage = lazy(() => import('src/sections/customer/passwordReset'));
+const UpdateEmailPage = lazy(() => import('src/sections/customer/updateEmail'));
+const BlockEmailPage = lazy(() => import('src/sections/customer/blockEmail'));
 
 // ----------------------------------------------------------------------
 
