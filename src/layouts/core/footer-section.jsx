@@ -14,6 +14,7 @@ export function FooterSection({
   ...other
 }) {
   const theme = useTheme();
+  const currentYear = new Date().getFullYear(); // Dynamically get the current year
 
   return (
     <AppBar
@@ -37,7 +38,7 @@ export function FooterSection({
           textAlign: 'center',
         }}
       >
-        Pabbly © 2025. All Rights Reserved.
+        Pabbly © {currentYear}. All Rights Reserved.
       </Container>
 
       {slots?.bottomArea}
