@@ -1,26 +1,38 @@
+import { z as zod } from 'zod';
 import { useState } from 'react';
 import { useTheme } from '@emotion/react';
+import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Box, Alert, Button, Tooltip, Snackbar, useMediaQuery } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import { Box, Card, Alert, Stack, Button, Snackbar, useMediaQuery } from '@mui/material';
+
+import { useBoolean } from 'src/hooks/use-boolean';
 
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { listItems } from 'src/_mock/big-card/_dashboardBigCardListItems';
 
 import { Iconify } from 'src/components/iconify';
-import BigCard from 'src/components/big-card/big-card';
-import StatsCards from 'src/components/stats-card/stats-card';
+import { Form, Field } from 'src/components/hook-form';
 import PageHeader from 'src/components/page-header/page-header';
-import DashboardFolder from 'src/components/dashboard-folder/dashboard-folder';
 
 import AddDialog from 'src/sections/one/components/dialog/add-dialog';
-import { UsersTable } from 'src/sections/users/components/table/users-table';
 
-// ----------------------------------------------------------------------
-
-const metadata = { title: `Update Email | Admin - ${CONFIG.site.name}` };
+const metadata = { title: `Password Reset | Admin - ${CONFIG.site.name}` };
 const { items, style } = listItems;
+
+const EmailUpdateSchema = zod.object({
+  oldEmail: zod
+    .string()
+    .min(1, { message: 'Old email is required!' })
+    .email({ message: 'Invalid email address!' }),
+  newEmail: zod
+    .string()
+    .min(1, { message: 'New email is required!' })
+    .email({ message: 'Invalid email address!' }),
+});
 
 export default function Page() {
   const [addSubaccountDialogOpen, setAddSubaccountDialogOpen] = useState(false);
@@ -35,8 +47,35 @@ export default function Page() {
     if (reason === 'clickaway') return;
     setSnackbarState((prev) => ({ ...prev, open: false }));
   };
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const password = useBoolean();
+
+  const defaultValues = { oldEmail: '', newEmail: '' };
+
+  const methods = useForm({
+    mode: 'all',
+    resolver: zodResolver(EmailUpdateSchema),
+    defaultValues,
+  });
+
+  const {
+    reset,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = methods;
+
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      reset();
+      console.info('DATA', data);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
   const buttonClick = () => {
     setAddSubaccountDialogOpen(true);
@@ -49,7 +88,7 @@ export default function Page() {
 
     setSnackbarState({
       open: true,
-      message: 'Successfull messgae',
+      message: 'Successfull message',
       severity: 'success',
     });
 
@@ -72,120 +111,40 @@ export default function Page() {
           }}
         >
           <PageHeader
-            title="Update Email"
-            Subheading="Subheading of the page showcasing the features of this page in relation to the entire application."
+            title="Update Customer Email"
+            Subheading="From here, account email will be updated in Connect, PSB, PEM,"
             link_added="#"
           />
-          <Tooltip
-            title="Click here to add WhatsApp Number."
-            arrow
-            placement="top"
-            disableInteractive
-          >
-            <Button
-              onClick={buttonClick}
-              sx={{ mt: isMobile ? 2 : 0 }}
-              startIcon={
-                <Iconify icon="heroicons:plus-circle-16-solid" style={{ width: 18, height: 18 }} />
-              }
-              size="large"
-              variant="contained"
-              color="primary"
-            >
-              Add Button
-            </Button>
-          </Tooltip>
         </Box>
-        <Box
-          sx={{
-            mt: '40px',
-            mb: '24px',
-            gap: 3,
-            display: 'grid',
-            flexWrap: 'wrap',
-            gridTemplateColumns: { xs: 'repeat(1, 1fr)', md: 'repeat(5, 1fr)' },
-          }}
-        >
-          <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-          <StatsCards
-            cardtitle="WhatsApp Message "
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-          <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-          <StatsCards
-            cardtitle="WhatsApp "
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-          <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-        </Box>
-        <Box
-          sx={{
-            // mt: 4,
-            gap: 3,
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            alignItems: 'stretch',
-          }}
-        >
-          <Box>
-            <DashboardFolder />
-          </Box>
-          <Box width="100%">
-            <Box>
-              <BigCard
-                getHelp={false}
-                isVideo
-                bigcardtitle="Points To Remember!"
-                buttontitle="Add WhatsApp Number"
-                style={style}
-                items={items}
-                videoLink="https://www.youtube.com/embed/S-gpjyxqRZo?si=RraJU_Q1ht71Pk2T"
-                thumbnailName="Pabbly Plus-3-min.png"
-                action={
-                  <Button
-                    startIcon={
-                      <Iconify
-                        icon="heroicons:plus-circle-16-solid"
-                        style={{ width: 18, height: 18 }}
-                      />
-                    }
-                    variant="outlined"
-                    color="primary"
-                    size="large"
-                  >
-                    Action Button
-                  </Button>
+        <Box mt={4}>
+          <Form methods={methods} onSubmit={onSubmit}>
+            <Card sx={{ p: 3, gap: 3, display: 'flex', flexDirection: 'column' }}>
+              <Field.Text name="oldEmail" type="email" label="Old Email" />
+
+              <Field.Text
+                name="newEmail"
+                type="email"
+                label="New Email"
+                helperText={
+                  <Stack component="span" direction="row" alignItems="center">
+                    <Iconify icon="eva:info-fill" width={16} sx={{ mr: 0.5 }} /> Before changing
+                    email, make sure that the customer does not have the affiliate associated with
+                    the email. As changing the email will impact the affiliate links.
+                  </Stack>
                 }
               />
-            </Box>
-            <Box mt={3}>
-              <UsersTable />
-            </Box>
-          </Box>
+
+              <LoadingButton
+                type="submit"
+                variant="contained"
+                color="primary"
+                loading={isSubmitting}
+                sx={{ ml: 'auto' }}
+              >
+                Submit
+              </LoadingButton>
+            </Card>
+          </Form>
         </Box>
       </DashboardContent>
       <AddDialog
