@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import { Tooltip } from '@mui/material';
-import Button from '@mui/material/Button';
+// import { Tooltip } from '@mui/material';
+// import Button from '@mui/material/Button';
 import { styled, useTheme } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
@@ -13,9 +13,9 @@ import { CONFIG } from 'src/config-global';
 import { varAlpha } from 'src/theme/styles';
 
 import { Logo } from 'src/components/logo';
-import PabblyAppsMenu from 'src/components/all-apps-drawer/all-apps-drawer';
+// import PabblyAppsMenu from 'src/components/all-apps-drawer/all-apps-drawer';
 
-import Searchbar from '../components/searchbar';
+// import Searchbar from '../components/searchbar';
 import { HeaderSection } from './header-section';
 import { MenuButton } from '../components/menu-button';
 import { AccountDrawer } from '../components/account-drawer';
@@ -152,9 +152,9 @@ export function HeaderBase({
                 </Link>
               )}
 
-              {searchbar && <Searchbar data-slot="searchbar" data={data?.nav} />}
+              {/* {searchbar && <Searchbar data-slot="searchbar" data={data?.nav} />} */}
 
-              {isNotUpgraded && (
+              {/* {isNotUpgraded && (
                 <Tooltip
                   title="Click here to purchase email verification credits."
                   arrow
@@ -170,9 +170,9 @@ export function HeaderBase({
                     Upgrade
                   </Button>
                 </Tooltip>
-              )}
+              )} */}
 
-              <PabblyAppsMenu />
+              {/* <PabblyAppsMenu /> */}
 
               {account && <AccountDrawer data-slot="account" data={data?.account} />}
             </Box>

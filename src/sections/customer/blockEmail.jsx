@@ -169,38 +169,32 @@ export default function Page() {
                   />
                 )}
               />
-              <Box mt={2}>
-                <Typography variant="subtitle2">Status:</Typography>
-                <Stack direction="row" spacing={2}>
-                  <RadioGroup
-                    row
-                    name="status"
-                    value={status}
-                    onChange={(event) => setStatus(event.target.value)}
-                  >
-                    <FormControlLabel
-                      value="block"
-                      control={<Radio />}
-                      label="Block"
-                    />
-                    <FormControlLabel
-                      value="unblock"
-                      control={<Radio />}
-                      label="Unblock"
-                    />
-                  </RadioGroup>
-                </Stack>
-              </Box>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems:'center' }}>
+                <Box>
+                  <Typography variant="subtitle2">Status:</Typography>
+                  <Stack direction="row" spacing={2}>
+                    <RadioGroup
+                      row
+                      name="status"
+                      value={status}
+                      onChange={(event) => setStatus(event.target.value)}
+                    >
+                      <FormControlLabel value="block" control={<Radio />} label="Block" />
+                      <FormControlLabel value="unblock" control={<Radio />} label="Unblock" />
+                    </RadioGroup>
+                  </Stack>
+                </Box>
 
-              <LoadingButton
-                type="submit"
-                variant="contained"
-                color="primary"
-                loading={isSubmitting}
-                sx={{ ml: 'auto' }}
-              >
-                Submit
-              </LoadingButton>
+                <LoadingButton
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  loading={isSubmitting}
+                  sx={{ ml: 'auto' }}
+                >
+                  Submit
+                </LoadingButton>
+              </Box>
             </Card>
           </Form>
         </Box>

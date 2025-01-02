@@ -2,20 +2,19 @@ import { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { Helmet } from 'react-helmet-async';
 
-import { Box, Alert, Button, Tooltip, Snackbar, useMediaQuery } from '@mui/material';
+import { Box, Alert, Button, Snackbar, useMediaQuery } from '@mui/material';
 
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { listItems } from 'src/_mock/big-card/_dashboardBigCardListItems';
 
-import { Iconify } from 'src/components/iconify';
 import PageHeader from 'src/components/page-header/page-header';
 
 import AddDialog from 'src/sections/one/components/dialog/add-dialog';
 
 // ----------------------------------------------------------------------
 
-const metadata = { title: `Api | Admin - ${CONFIG.site.name}` };
+const metadata = { title: `Login to PEV Admin | Admin - ${CONFIG.site.name}` };
 const { items, style } = listItems;
 
 export default function Page() {
@@ -68,11 +67,11 @@ export default function Page() {
           }}
         >
           <PageHeader
-            title="Api"
-            Subheading="Subheading of the page showcasing the features of this page in relation to the entire application."
+            title="Login to PEV Admin"
+            Subheading="Subheading"
             link_added="#"
           />
-          <Tooltip
+          {/* <Tooltip
             title="Click here to add WhatsApp Number."
             arrow
             placement="top"
@@ -90,9 +89,10 @@ export default function Page() {
             >
               Add Button
             </Button>
-          </Tooltip>
+          </Tooltip> */}
         </Box>
-      
+     
+  
       </DashboardContent>
       <AddDialog
         addDialogOpen={addSubaccountDialogOpen}

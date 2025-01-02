@@ -9,13 +9,9 @@ import { DashboardContent } from 'src/layouts/dashboard';
 import { listItems } from 'src/_mock/big-card/_dashboardBigCardListItems';
 
 import { Iconify } from 'src/components/iconify';
-import BigCard from 'src/components/big-card/big-card';
-import StatsCards from 'src/components/stats-card/stats-card';
 import PageHeader from 'src/components/page-header/page-header';
-import DashboardFolder from 'src/components/dashboard-folder/dashboard-folder';
 
 import AddDialog from 'src/sections/one/components/dialog/add-dialog';
-import { UsersTable } from 'src/sections/users/components/table/users-table';
 
 // ----------------------------------------------------------------------
 
@@ -96,97 +92,7 @@ export default function Page() {
             </Button>
           </Tooltip>
         </Box>
-        <Box
-          sx={{
-            mt: '40px',
-            mb: '24px',
-            gap: 3,
-            display: 'grid',
-            flexWrap: 'wrap',
-            gridTemplateColumns: { xs: 'repeat(1, 1fr)', md: 'repeat(5, 1fr)' },
-          }}
-        >
-          <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-          <StatsCards
-            cardtitle="WhatsApp Message "
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-          <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-          <StatsCards
-            cardtitle="WhatsApp "
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-          <StatsCards
-            cardtitle="WhatsApp Message"
-            cardstats="10,000"
-            icon_name="2card.png"
-            icon_color="#FFA92E"
-            bg_gradient="#FFA92E"
-          />
-        </Box>
-        <Box
-          sx={{
-            // mt: 4,
-            gap: 3,
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            alignItems: 'stretch',
-          }}
-        >
-          <Box>
-            <DashboardFolder />
-          </Box>
-          <Box width="100%">
-            <Box>
-              <BigCard
-                getHelp={false}
-                isVideo
-                bigcardtitle="Points To Remember!"
-                buttontitle="Add WhatsApp Number"
-                style={style}
-                items={items}
-                videoLink="https://www.youtube.com/embed/S-gpjyxqRZo?si=RraJU_Q1ht71Pk2T"
-                thumbnailName="Pabbly Plus-3-min.png"
-                action={
-                  <Button
-                    startIcon={
-                      <Iconify
-                        icon="heroicons:plus-circle-16-solid"
-                        style={{ width: 18, height: 18 }}
-                      />
-                    }
-                    variant="outlined"
-                    color="primary"
-                    size="large"
-                  >
-                    Action Button
-                  </Button>
-                }
-              />
-            </Box>
-            <Box mt={3}>
-              <UsersTable />
-            </Box>
-          </Box>
-        </Box>
+     
       </DashboardContent>
       <AddDialog
         addDialogOpen={addSubaccountDialogOpen}

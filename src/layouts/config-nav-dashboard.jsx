@@ -13,6 +13,7 @@ const ICONS = {
   api: icon('api-icon'),
   customer: icon('customer-icon'),
   user: icon('user-icon'),
+  adminloginpanel: icon('adminloginpanel-icon'),
 };
 
 // ----------------------------------------------------------------------
@@ -57,5 +58,21 @@ export const navData = [
 
   {
     items: [{ title: 'Api', path: paths.app.api, icon: ICONS.api }],
+  },
+
+  {
+    items: [
+      {
+        title: 'Admin Login Panel',
+        path: paths.app.adminloginpanel.root,
+        icon: ICONS.adminloginpanel,
+        children: [
+          { title: 'Login to PSB Admin', path: paths.app.adminloginpanel.psbAdmin },
+          { title: 'Login to PFB Admin', path: paths.app.adminloginpanel.pfbAdmin },
+          { title: 'Login to PEV Admin', path: paths.app.adminloginpanel.pevAdmin},
+          { title: 'Login to PEM Admin', path: paths.app.adminloginpanel.pemAdmin},
+        ],
+      },
+    ],
   },
 ];

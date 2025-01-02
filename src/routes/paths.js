@@ -61,5 +61,13 @@ export const paths = {
       users: `${ROOTS.app}/user/users`,
       logs: `${ROOTS.app}/user/logs`,
     },
+
+    adminloginpanel: {
+      root: `${ROOTS.app}/adminloginpanel`,
+      psbAdmin: `${ROOTS.app}/adminloginpanel/psbAdmin`,
+      pfbAdmin: `${ROOTS.app}/adminloginpanel/pfbAdmin`,
+      pevAdmin: `${ROOTS.app}/adminloginpanel/pevAdmin`,
+      pemAdmin: `${ROOTS.app}/adminloginpanel/pemAdmin`,
+    },
   },
 };

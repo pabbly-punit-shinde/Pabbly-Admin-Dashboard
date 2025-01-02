@@ -23,6 +23,12 @@ const PasswordResetPage = lazy(() => import('src/sections/customer/passwordReset
 const UpdateEmailPage = lazy(() => import('src/sections/customer/updateEmail'));
 const BlockEmailPage = lazy(() => import('src/sections/customer/blockEmail'));
 
+const AdminPanel = lazy(() => import('src/pages/app/adminPanel'));
+const PSBAdmin = lazy(() => import('src/sections/admin/psbAdmin'));
+const PFBAdmin = lazy(() => import('src/sections/admin/pfbAdmin'));
+const PEVAdmin = lazy(() => import('src/sections/admin/pevAdmin'));
+const PEMAdmin = lazy(() => import('src/sections/admin/pemAdmin'));
+
 // ----------------------------------------------------------------------
 
 const layoutContent = (
@@ -39,24 +45,35 @@ export const dashboardRoutes = [
     element: CONFIG.auth.skip ? <>{layoutContent}</> : <AuthGuard>{layoutContent}</AuthGuard>,
     children: [
       { element: <IndexPage />, index: true },
-      { path: 'api', element: <ApiPage /> },
 
       {
         path: 'customer',
         children: [
           { element: <CustomerPage />, index: true },
           { path: 'customers', element: <CustomersPage /> },
-          { path: 'passwordreset', element: <PasswordResetPage/>},
+          { path: 'passwordreset', element: <PasswordResetPage /> },
           { path: 'updateemail', element: <UpdateEmailPage /> },
           { path: 'blockemail', element: <BlockEmailPage /> },
         ],
       },
+
       {
         path: 'user',
         children: [
           { element: <UserPage />, index: true },
           { path: 'users', element: <UsersPage /> },
           { path: 'logs', element: <LogsPage /> },
+        ],
+      },
+      { path: 'api', element: <ApiPage /> },
+      {
+        path: 'adminloginpanel',
+        children: [
+          { element: <AdminPanel />, index: true },
+          { path: 'psbAdmin', element: <PSBAdmin /> },
+          { path: 'pfbAdmin', element: <PFBAdmin /> },
+          { path: 'pevAdmin', element: <PEVAdmin /> },
+          { path: 'pemAdmin', element: <PEMAdmin /> },
         ],
       },
     ],
