@@ -11,10 +11,14 @@ import {
   Card,
   Alert,
   Stack,
+  Radio,
   Button,
   Snackbar,
-  useMediaQuery,
+  RadioGroup,
+  Typography,
   Autocomplete,
+  useMediaQuery,
+  FormControlLabel,
 } from '@mui/material';
 
 import { useBoolean } from 'src/hooks/use-boolean';
@@ -84,6 +88,8 @@ export default function Page() {
     formState: { isSubmitting },
   } = methods;
 
+  const [status, setStatus] = useState('block'); // Add state for status
+
   const onSubmit = handleSubmit(async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
@@ -111,6 +117,7 @@ export default function Page() {
 
     setAddSubaccountDialogOpen(false);
   };
+
   return (
     <>
       <Helmet>
@@ -162,6 +169,28 @@ export default function Page() {
                   />
                 )}
               />
+              <Box mt={2}>
+                <Typography variant="subtitle2">Status:</Typography>
+                <Stack direction="row" spacing={2}>
+                  <RadioGroup
+                    row
+                    name="status"
+                    value={status}
+                    onChange={(event) => setStatus(event.target.value)}
+                  >
+                    <FormControlLabel
+                      value="block"
+                      control={<Radio />}
+                      label="Block"
+                    />
+                    <FormControlLabel
+                      value="unblock"
+                      control={<Radio />}
+                      label="Unblock"
+                    />
+                  </RadioGroup>
+                </Stack>
+              </Box>
 
               <LoadingButton
                 type="submit"
